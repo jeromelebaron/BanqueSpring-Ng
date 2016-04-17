@@ -1,0 +1,250 @@
+16:20:21,341  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:20:21,550  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from class path resource [spring-data-test.xml]
+16:20:22,010  INFO GenericApplicationContext:513 - Refreshing org.springframework.context.support.GenericApplicationContext@5d8409fb: startup date [Sun Apr 17 16:20:22 CEST 2016]; root of context hierarchy
+16:20:22,608  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+16:20:22,618  INFO Version:54 - HHH000412: Hibernate Core {4.3.8.Final}
+16:20:22,621  INFO Environment:239 - HHH000206: hibernate.properties not found
+16:20:22,624  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+16:20:22,666  INFO Configuration:2111 - HHH000044: Configuring from URL: file:/Users/Jerome/Documents/AFCEPF/Atod26/Spring-Banque3Pom/BanqueSpring-ng/BanqueSpring-Data/target/test-classes/hibernate-test.cfg.xml
+16:20:22,713  WARN DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+16:20:22,766  INFO Configuration:2216 - HHH000041: Configured SessionFactory: null
+16:20:23,522  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:20:23,708  WARN AnnotationBinder:910 - HHH000457: Joined inheritance hierarchy [fr.afcepf.atod26.java.spring.banque.entity.Utilisateur] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+16:20:23,881  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+16:20:23,890  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+16:20:24,405  INFO SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+16:20:24,408 DEBUG SQL:109 - alter table Client drop foreign key FK_tmsskjhmh47g1dfd33o3msmgg
+16:20:24,468 DEBUG SQL:109 - alter table Conseiller drop foreign key FK_1g42pjxn7l6j09l5xg8vto3be
+16:20:24,483 DEBUG SQL:109 - alter table compte drop foreign key FK_20a8vu6mk97d7bty54i0lsjr
+16:20:24,497 DEBUG SQL:109 - alter table operation_compte drop foreign key FK_f2x8vhjt0o6jddjq5dap8rrki
+16:20:24,511 DEBUG SQL:109 - drop table if exists Client
+16:20:24,518 DEBUG SQL:109 - drop table if exists Conseiller
+16:20:24,522 DEBUG SQL:109 - drop table if exists compte
+16:20:24,525 DEBUG SQL:109 - drop table if exists operation_compte
+16:20:24,529 DEBUG SQL:109 - drop table if exists utilisateur
+16:20:24,534 DEBUG SQL:109 - create table Client (id_utilisateur integer not null, primary key (id_utilisateur))
+16:20:24,560 DEBUG SQL:109 - create table Conseiller (id_utilisateur integer not null, primary key (id_utilisateur))
+16:20:24,577 DEBUG SQL:109 - create table compte (numero_compte integer not null auto_increment, date_de_creation datetime not null, type_de_compte varchar(45) not null, id_utilisateur integer, primary key (numero_compte))
+16:20:24,593 DEBUG SQL:109 - create table operation_compte (type_operation varchar(31) not null, numero_operation integer not null auto_increment, date_operation datetime not null, montant double precision not null, compte integer not null, primary key (numero_operation))
+16:20:24,607 DEBUG SQL:109 - create table utilisateur (type_utilisateur varchar(31) not null, id_utilisateur integer not null auto_increment, mail varchar(45) not null, mot_de_passe varchar(45) not null, nom varchar(45) not null, prenom varchar(45) not null, primary key (id_utilisateur))
+16:20:24,620 DEBUG SQL:109 - alter table Client add constraint FK_tmsskjhmh47g1dfd33o3msmgg foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:20:24,657 DEBUG SQL:109 - alter table Conseiller add constraint FK_1g42pjxn7l6j09l5xg8vto3be foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:20:24,678 DEBUG SQL:109 - alter table compte add constraint FK_20a8vu6mk97d7bty54i0lsjr foreign key (id_utilisateur) references Client (id_utilisateur)
+16:20:24,701 DEBUG SQL:109 - alter table operation_compte add constraint FK_f2x8vhjt0o6jddjq5dap8rrki foreign key (compte) references compte (numero_compte)
+16:20:24,906  INFO SchemaExport:406 - HHH000230: Schema export complete
+16:20:25,037  INFO HibernateTransactionManager:341 - Using DataSource [org.apache.commons.dbcp2.BasicDataSource@5516d3dc] of Hibernate SessionFactory for HibernateTransactionManager
+16:20:25,363 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:20:25,404 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:20:25,457 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:20:25,460 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:20:25,475 DEBUG SQL:109 - insert into compte (id_utilisateur, date_de_creation, type_de_compte) values (?, ?, ?)
+16:20:25,528  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:20:25,557 DEBUG SQL:109 - select operationc0_.numero_operation as numero_o2_3_, operationc0_.compte as compte5_3_, operationc0_.date_operation as date_ope3_3_, operationc0_.montant as montant4_3_, operationc0_.type_operation as type_ope1_3_ from operation_compte operationc0_ where operationc0_.compte=?
+16:20:25,567 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_0_, compte0_.id_utilisateur as id_utili4_2_0_, compte0_.date_de_creation as date_de_2_2_0_, compte0_.type_de_compte as type_de_3_2_0_, client1_.id_utilisateur as id_utili2_4_1_, client1_1_.mail as mail3_4_1_, client1_1_.mot_de_passe as mot_de_p4_4_1_, client1_1_.nom as nom5_4_1_, client1_1_.prenom as prenom6_4_1_ from compte compte0_ left outer join Client client1_ on compte0_.id_utilisateur=client1_.id_utilisateur left outer join utilisateur client1_1_ on client1_.id_utilisateur=client1_1_.id_utilisateur where compte0_.numero_compte=?
+16:20:25,591 DEBUG SQL:109 - insert into operation_compte (compte, date_operation, montant, type_operation) values (?, ?, ?, 'OperationCompte')
+16:20:25,610  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:20:25,629 DEBUG SQL:109 - select utilisateu0_.id_utilisateur as id_utili2_4_, utilisateu0_.mail as mail3_4_, utilisateu0_.mot_de_passe as mot_de_p4_4_, utilisateu0_.nom as nom5_4_, utilisateu0_.prenom as prenom6_4_, utilisateu0_.type_utilisateur as type_uti1_4_ from utilisateur utilisateu0_ left outer join Client utilisateu0_1_ on utilisateu0_.id_utilisateur=utilisateu0_1_.id_utilisateur left outer join Conseiller utilisateu0_2_ on utilisateu0_.id_utilisateur=utilisateu0_2_.id_utilisateur where utilisateu0_.mail=? and utilisateu0_.mot_de_passe=?
+16:20:25,674 DEBUG SQL:109 - select this_.id_utilisateur as id_utili2_4_0_, this_1_.mail as mail3_4_0_, this_1_.mot_de_passe as mot_de_p4_4_0_, this_1_.nom as nom5_4_0_, this_1_.prenom as prenom6_4_0_ from Client this_ inner join utilisateur this_1_ on this_.id_utilisateur=this_1_.id_utilisateur
+16:20:25,684 DEBUG SQL:109 - insert into utilisateur (mail, mot_de_passe, nom, prenom, type_utilisateur) values (?, ?, ?, ?, 'client')
+16:20:25,704 DEBUG SQL:109 - insert into Client (id_utilisateur) values (?)
+16:20:25,721  INFO GenericApplicationContext:873 - Closing org.springframework.context.support.GenericApplicationContext@5d8409fb: startup date [Sun Apr 17 16:20:22 CEST 2016]; root of context hierarchy
+16:23:00,158  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:23:00,381  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from class path resource [spring-data-test.xml]
+16:23:00,823  INFO GenericApplicationContext:513 - Refreshing org.springframework.context.support.GenericApplicationContext@5d8409fb: startup date [Sun Apr 17 16:23:00 CEST 2016]; root of context hierarchy
+16:23:01,515  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+16:23:01,523  INFO Version:54 - HHH000412: Hibernate Core {4.3.8.Final}
+16:23:01,525  INFO Environment:239 - HHH000206: hibernate.properties not found
+16:23:01,528  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+16:23:01,555  INFO Configuration:2111 - HHH000044: Configuring from URL: file:/Users/Jerome/Documents/AFCEPF/Atod26/Spring-Banque3Pom/BanqueSpring-ng/BanqueSpring-Data/target/test-classes/hibernate-test.cfg.xml
+16:23:01,604  WARN DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+16:23:01,646  INFO Configuration:2216 - HHH000041: Configured SessionFactory: null
+16:23:02,427  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:23:02,575  WARN AnnotationBinder:910 - HHH000457: Joined inheritance hierarchy [fr.afcepf.atod26.java.spring.banque.entity.Utilisateur] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+16:23:02,751  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+16:23:02,757  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+16:23:03,213  INFO SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+16:23:03,216 DEBUG SQL:109 - alter table Client drop foreign key FK_tmsskjhmh47g1dfd33o3msmgg
+16:23:03,265 DEBUG SQL:109 - alter table Conseiller drop foreign key FK_1g42pjxn7l6j09l5xg8vto3be
+16:23:03,284 DEBUG SQL:109 - alter table compte drop foreign key FK_20a8vu6mk97d7bty54i0lsjr
+16:23:03,301 DEBUG SQL:109 - alter table operation_compte drop foreign key FK_f2x8vhjt0o6jddjq5dap8rrki
+16:23:03,318 DEBUG SQL:109 - drop table if exists Client
+16:23:03,321 DEBUG SQL:109 - drop table if exists Conseiller
+16:23:03,325 DEBUG SQL:109 - drop table if exists compte
+16:23:03,330 DEBUG SQL:109 - drop table if exists operation_compte
+16:23:03,335 DEBUG SQL:109 - drop table if exists utilisateur
+16:23:03,338 DEBUG SQL:109 - create table Client (id_utilisateur integer not null, primary key (id_utilisateur))
+16:23:03,354 DEBUG SQL:109 - create table Conseiller (id_utilisateur integer not null, primary key (id_utilisateur))
+16:23:03,368 DEBUG SQL:109 - create table compte (numero_compte integer not null auto_increment, date_de_creation datetime not null, type_de_compte varchar(45) not null, id_utilisateur integer, primary key (numero_compte))
+16:23:03,389 DEBUG SQL:109 - create table operation_compte (type_operation varchar(31) not null, numero_operation integer not null auto_increment, date_operation datetime not null, montant double precision not null, compte integer not null, primary key (numero_operation))
+16:23:03,409 DEBUG SQL:109 - create table utilisateur (type_utilisateur varchar(31) not null, id_utilisateur integer not null auto_increment, mail varchar(45) not null, mot_de_passe varchar(45) not null, nom varchar(45) not null, prenom varchar(45) not null, primary key (id_utilisateur))
+16:23:03,426 DEBUG SQL:109 - alter table Client add constraint FK_tmsskjhmh47g1dfd33o3msmgg foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:23:03,445 DEBUG SQL:109 - alter table Conseiller add constraint FK_1g42pjxn7l6j09l5xg8vto3be foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:23:03,465 DEBUG SQL:109 - alter table compte add constraint FK_20a8vu6mk97d7bty54i0lsjr foreign key (id_utilisateur) references Client (id_utilisateur)
+16:23:03,490 DEBUG SQL:109 - alter table operation_compte add constraint FK_f2x8vhjt0o6jddjq5dap8rrki foreign key (compte) references compte (numero_compte)
+16:23:03,699  INFO SchemaExport:406 - HHH000230: Schema export complete
+16:23:03,822  INFO HibernateTransactionManager:341 - Using DataSource [org.apache.commons.dbcp2.BasicDataSource@5516d3dc] of Hibernate SessionFactory for HibernateTransactionManager
+16:23:04,112 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:23:04,156 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:23:04,201 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:23:04,204 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:23:04,219 DEBUG SQL:109 - insert into compte (id_utilisateur, date_de_creation, type_de_compte) values (?, ?, ?)
+16:23:04,254  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:23:04,287 DEBUG SQL:109 - select operationc0_.numero_operation as numero_o2_3_, operationc0_.compte as compte5_3_, operationc0_.date_operation as date_ope3_3_, operationc0_.montant as montant4_3_, operationc0_.type_operation as type_ope1_3_ from operation_compte operationc0_ where operationc0_.compte=?
+16:23:04,294 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_0_, compte0_.id_utilisateur as id_utili4_2_0_, compte0_.date_de_creation as date_de_2_2_0_, compte0_.type_de_compte as type_de_3_2_0_, client1_.id_utilisateur as id_utili2_4_1_, client1_1_.mail as mail3_4_1_, client1_1_.mot_de_passe as mot_de_p4_4_1_, client1_1_.nom as nom5_4_1_, client1_1_.prenom as prenom6_4_1_ from compte compte0_ left outer join Client client1_ on compte0_.id_utilisateur=client1_.id_utilisateur left outer join utilisateur client1_1_ on client1_.id_utilisateur=client1_1_.id_utilisateur where compte0_.numero_compte=?
+16:23:04,328 DEBUG SQL:109 - insert into operation_compte (compte, date_operation, montant, type_operation) values (?, ?, ?, 'OperationCompte')
+16:23:04,338  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:23:04,362 DEBUG SQL:109 - select utilisateu0_.id_utilisateur as id_utili2_4_, utilisateu0_.mail as mail3_4_, utilisateu0_.mot_de_passe as mot_de_p4_4_, utilisateu0_.nom as nom5_4_, utilisateu0_.prenom as prenom6_4_, utilisateu0_.type_utilisateur as type_uti1_4_ from utilisateur utilisateu0_ left outer join Client utilisateu0_1_ on utilisateu0_.id_utilisateur=utilisateu0_1_.id_utilisateur left outer join Conseiller utilisateu0_2_ on utilisateu0_.id_utilisateur=utilisateu0_2_.id_utilisateur where utilisateu0_.mail=? and utilisateu0_.mot_de_passe=?
+16:23:04,380 DEBUG SQL:109 - select this_.id_utilisateur as id_utili2_4_0_, this_1_.mail as mail3_4_0_, this_1_.mot_de_passe as mot_de_p4_4_0_, this_1_.nom as nom5_4_0_, this_1_.prenom as prenom6_4_0_ from Client this_ inner join utilisateur this_1_ on this_.id_utilisateur=this_1_.id_utilisateur
+16:23:04,399 DEBUG SQL:109 - insert into utilisateur (mail, mot_de_passe, nom, prenom, type_utilisateur) values (?, ?, ?, ?, 'client')
+16:23:04,408 DEBUG SQL:109 - insert into Client (id_utilisateur) values (?)
+16:23:04,434  INFO GenericApplicationContext:873 - Closing org.springframework.context.support.GenericApplicationContext@5d8409fb: startup date [Sun Apr 17 16:23:00 CEST 2016]; root of context hierarchy
+16:27:12,741  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:27:12,948  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from class path resource [spring-data-test.xml]
+16:27:13,416  INFO GenericApplicationContext:513 - Refreshing org.springframework.context.support.GenericApplicationContext@7af485b: startup date [Sun Apr 17 16:27:13 CEST 2016]; root of context hierarchy
+16:27:14,037  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+16:27:14,047  INFO Version:54 - HHH000412: Hibernate Core {4.3.8.Final}
+16:27:14,050  INFO Environment:239 - HHH000206: hibernate.properties not found
+16:27:14,053  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+16:27:14,091  INFO Configuration:2111 - HHH000044: Configuring from URL: file:/Users/Jerome/Documents/AFCEPF/Atod26/Spring-Banque3Pom/BanqueSpring-ng/BanqueSpring-Data/target/test-classes/hibernate-test.cfg.xml
+16:27:14,138  WARN DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+16:27:14,172  INFO Configuration:2216 - HHH000041: Configured SessionFactory: null
+16:27:14,893  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:27:15,058  WARN AnnotationBinder:910 - HHH000457: Joined inheritance hierarchy [fr.afcepf.atod26.java.spring.banque.entity.Utilisateur] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+16:27:15,240  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+16:27:15,249  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+16:27:15,807  INFO SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+16:27:15,810 DEBUG SQL:109 - alter table Client drop foreign key FK_tmsskjhmh47g1dfd33o3msmgg
+16:27:15,847 DEBUG SQL:109 - alter table Conseiller drop foreign key FK_1g42pjxn7l6j09l5xg8vto3be
+16:27:15,863 DEBUG SQL:109 - alter table compte drop foreign key FK_20a8vu6mk97d7bty54i0lsjr
+16:27:15,879 DEBUG SQL:109 - alter table operation_compte drop foreign key FK_f2x8vhjt0o6jddjq5dap8rrki
+16:27:15,897 DEBUG SQL:109 - drop table if exists Client
+16:27:15,900 DEBUG SQL:109 - drop table if exists Conseiller
+16:27:15,904 DEBUG SQL:109 - drop table if exists compte
+16:27:15,907 DEBUG SQL:109 - drop table if exists operation_compte
+16:27:15,910 DEBUG SQL:109 - drop table if exists utilisateur
+16:27:15,913 DEBUG SQL:109 - create table Client (id_utilisateur integer not null, primary key (id_utilisateur))
+16:27:15,928 DEBUG SQL:109 - create table Conseiller (id_utilisateur integer not null, primary key (id_utilisateur))
+16:27:15,939 DEBUG SQL:109 - create table compte (numero_compte integer not null auto_increment, date_de_creation datetime not null, type_de_compte varchar(45) not null, id_utilisateur integer, primary key (numero_compte))
+16:27:15,950 DEBUG SQL:109 - create table operation_compte (type_operation varchar(31) not null, numero_operation integer not null auto_increment, date_operation datetime not null, montant double precision not null, compte integer not null, primary key (numero_operation))
+16:27:15,964 DEBUG SQL:109 - create table utilisateur (type_utilisateur varchar(31) not null, id_utilisateur integer not null auto_increment, mail varchar(45) not null, mot_de_passe varchar(45) not null, nom varchar(45) not null, prenom varchar(45) not null, primary key (id_utilisateur))
+16:27:15,981 DEBUG SQL:109 - alter table Client add constraint FK_tmsskjhmh47g1dfd33o3msmgg foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:27:16,000 DEBUG SQL:109 - alter table Conseiller add constraint FK_1g42pjxn7l6j09l5xg8vto3be foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:27:16,020 DEBUG SQL:109 - alter table compte add constraint FK_20a8vu6mk97d7bty54i0lsjr foreign key (id_utilisateur) references Client (id_utilisateur)
+16:27:16,038 DEBUG SQL:109 - alter table operation_compte add constraint FK_f2x8vhjt0o6jddjq5dap8rrki foreign key (compte) references compte (numero_compte)
+16:27:16,256  INFO SchemaExport:406 - HHH000230: Schema export complete
+16:27:16,390  INFO HibernateTransactionManager:341 - Using DataSource [org.apache.commons.dbcp2.BasicDataSource@199574a6] of Hibernate SessionFactory for HibernateTransactionManager
+16:27:16,726 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:27:16,769 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:27:16,817 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:27:16,824 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:27:16,856 DEBUG SQL:109 - insert into compte (id_utilisateur, date_de_creation, type_de_compte) values (?, ?, ?)
+16:27:16,890  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:27:16,910 DEBUG SQL:109 - select operationc0_.numero_operation as numero_o2_3_, operationc0_.compte as compte5_3_, operationc0_.date_operation as date_ope3_3_, operationc0_.montant as montant4_3_, operationc0_.type_operation as type_ope1_3_ from operation_compte operationc0_ where operationc0_.compte=?
+16:27:16,919 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_0_, compte0_.id_utilisateur as id_utili4_2_0_, compte0_.date_de_creation as date_de_2_2_0_, compte0_.type_de_compte as type_de_3_2_0_, client1_.id_utilisateur as id_utili2_4_1_, client1_1_.mail as mail3_4_1_, client1_1_.mot_de_passe as mot_de_p4_4_1_, client1_1_.nom as nom5_4_1_, client1_1_.prenom as prenom6_4_1_ from compte compte0_ left outer join Client client1_ on compte0_.id_utilisateur=client1_.id_utilisateur left outer join utilisateur client1_1_ on client1_.id_utilisateur=client1_1_.id_utilisateur where compte0_.numero_compte=?
+16:27:16,944 DEBUG SQL:109 - insert into operation_compte (compte, date_operation, montant, type_operation) values (?, ?, ?, 'OperationCompte')
+16:27:16,957  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:27:16,975 DEBUG SQL:109 - select utilisateu0_.id_utilisateur as id_utili2_4_, utilisateu0_.mail as mail3_4_, utilisateu0_.mot_de_passe as mot_de_p4_4_, utilisateu0_.nom as nom5_4_, utilisateu0_.prenom as prenom6_4_, utilisateu0_.type_utilisateur as type_uti1_4_ from utilisateur utilisateu0_ left outer join Client utilisateu0_1_ on utilisateu0_.id_utilisateur=utilisateu0_1_.id_utilisateur left outer join Conseiller utilisateu0_2_ on utilisateu0_.id_utilisateur=utilisateu0_2_.id_utilisateur where utilisateu0_.mail=? and utilisateu0_.mot_de_passe=?
+16:27:16,995 DEBUG SQL:109 - select this_.id_utilisateur as id_utili2_4_0_, this_1_.mail as mail3_4_0_, this_1_.mot_de_passe as mot_de_p4_4_0_, this_1_.nom as nom5_4_0_, this_1_.prenom as prenom6_4_0_ from Client this_ inner join utilisateur this_1_ on this_.id_utilisateur=this_1_.id_utilisateur
+16:27:17,007 DEBUG SQL:109 - insert into utilisateur (mail, mot_de_passe, nom, prenom, type_utilisateur) values (?, ?, ?, ?, 'client')
+16:27:17,013 DEBUG SQL:109 - insert into Client (id_utilisateur) values (?)
+16:27:17,038  INFO GenericApplicationContext:873 - Closing org.springframework.context.support.GenericApplicationContext@7af485b: startup date [Sun Apr 17 16:27:13 CEST 2016]; root of context hierarchy
+16:30:44,661  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:30:45,266  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from class path resource [spring-data-test.xml]
+16:30:45,988  INFO GenericApplicationContext:513 - Refreshing org.springframework.context.support.GenericApplicationContext@7ab6db4: startup date [Sun Apr 17 16:30:45 CEST 2016]; root of context hierarchy
+16:30:46,745  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+16:30:46,754  INFO Version:54 - HHH000412: Hibernate Core {4.3.8.Final}
+16:30:46,756  INFO Environment:239 - HHH000206: hibernate.properties not found
+16:30:46,759  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+16:30:46,798  INFO Configuration:2111 - HHH000044: Configuring from URL: file:/Users/Jerome/Documents/AFCEPF/Atod26/Spring-Banque3Pom/BanqueSpring-ng/BanqueSpring-Data/target/test-classes/hibernate-test.cfg.xml
+16:30:46,843  WARN DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+16:30:46,874  INFO Configuration:2216 - HHH000041: Configured SessionFactory: null
+16:30:47,690  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:30:47,823  WARN AnnotationBinder:910 - HHH000457: Joined inheritance hierarchy [fr.afcepf.atod26.java.spring.banque.entity.Utilisateur] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+16:30:47,990  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+16:30:47,996  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+16:30:48,493  INFO SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+16:30:48,496 DEBUG SQL:109 - alter table Client drop foreign key FK_tmsskjhmh47g1dfd33o3msmgg
+16:30:48,580 DEBUG SQL:109 - alter table Conseiller drop foreign key FK_1g42pjxn7l6j09l5xg8vto3be
+16:30:48,600 DEBUG SQL:109 - alter table compte drop foreign key FK_20a8vu6mk97d7bty54i0lsjr
+16:30:48,619 DEBUG SQL:109 - alter table operation_compte drop foreign key FK_f2x8vhjt0o6jddjq5dap8rrki
+16:30:48,637 DEBUG SQL:109 - drop table if exists Client
+16:30:48,641 DEBUG SQL:109 - drop table if exists Conseiller
+16:30:48,645 DEBUG SQL:109 - drop table if exists compte
+16:30:48,649 DEBUG SQL:109 - drop table if exists operation_compte
+16:30:48,652 DEBUG SQL:109 - drop table if exists utilisateur
+16:30:48,656 DEBUG SQL:109 - create table Client (id_utilisateur integer not null, primary key (id_utilisateur))
+16:30:48,674 DEBUG SQL:109 - create table Conseiller (id_utilisateur integer not null, primary key (id_utilisateur))
+16:30:48,691 DEBUG SQL:109 - create table compte (numero_compte integer not null auto_increment, date_de_creation datetime not null, type_de_compte varchar(45) not null, id_utilisateur integer, primary key (numero_compte))
+16:30:48,711 DEBUG SQL:109 - create table operation_compte (type_operation varchar(31) not null, numero_operation integer not null auto_increment, date_operation datetime not null, montant double precision not null, compte integer not null, primary key (numero_operation))
+16:30:48,728 DEBUG SQL:109 - create table utilisateur (type_utilisateur varchar(31) not null, id_utilisateur integer not null auto_increment, mail varchar(45) not null, mot_de_passe varchar(45) not null, nom varchar(45) not null, prenom varchar(45) not null, primary key (id_utilisateur))
+16:30:48,744 DEBUG SQL:109 - alter table Client add constraint FK_tmsskjhmh47g1dfd33o3msmgg foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:30:48,762 DEBUG SQL:109 - alter table Conseiller add constraint FK_1g42pjxn7l6j09l5xg8vto3be foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:30:48,779 DEBUG SQL:109 - alter table compte add constraint FK_20a8vu6mk97d7bty54i0lsjr foreign key (id_utilisateur) references Client (id_utilisateur)
+16:30:48,801 DEBUG SQL:109 - alter table operation_compte add constraint FK_f2x8vhjt0o6jddjq5dap8rrki foreign key (compte) references compte (numero_compte)
+16:30:49,030  INFO SchemaExport:406 - HHH000230: Schema export complete
+16:30:49,187  INFO HibernateTransactionManager:341 - Using DataSource [org.apache.commons.dbcp2.BasicDataSource@7f869dcd] of Hibernate SessionFactory for HibernateTransactionManager
+16:30:49,616 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:30:49,697 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:30:49,794 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:30:49,813 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:30:49,843 DEBUG SQL:109 - insert into compte (id_utilisateur, date_de_creation, type_de_compte) values (?, ?, ?)
+16:30:49,893  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:30:49,938 DEBUG SQL:109 - select operationc0_.numero_operation as numero_o2_3_, operationc0_.compte as compte5_3_, operationc0_.date_operation as date_ope3_3_, operationc0_.montant as montant4_3_, operationc0_.type_operation as type_ope1_3_ from operation_compte operationc0_ where operationc0_.compte=?
+16:30:49,972 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_0_, compte0_.id_utilisateur as id_utili4_2_0_, compte0_.date_de_creation as date_de_2_2_0_, compte0_.type_de_compte as type_de_3_2_0_, client1_.id_utilisateur as id_utili2_4_1_, client1_1_.mail as mail3_4_1_, client1_1_.mot_de_passe as mot_de_p4_4_1_, client1_1_.nom as nom5_4_1_, client1_1_.prenom as prenom6_4_1_ from compte compte0_ left outer join Client client1_ on compte0_.id_utilisateur=client1_.id_utilisateur left outer join utilisateur client1_1_ on client1_.id_utilisateur=client1_1_.id_utilisateur where compte0_.numero_compte=?
+16:30:49,987 DEBUG SQL:109 - insert into operation_compte (compte, date_operation, montant, type_operation) values (?, ?, ?, 'OperationCompte')
+16:30:50,016  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:30:50,135 DEBUG SQL:109 - select utilisateu0_.id_utilisateur as id_utili2_4_, utilisateu0_.mail as mail3_4_, utilisateu0_.mot_de_passe as mot_de_p4_4_, utilisateu0_.nom as nom5_4_, utilisateu0_.prenom as prenom6_4_, utilisateu0_.type_utilisateur as type_uti1_4_ from utilisateur utilisateu0_ left outer join Client utilisateu0_1_ on utilisateu0_.id_utilisateur=utilisateu0_1_.id_utilisateur left outer join Conseiller utilisateu0_2_ on utilisateu0_.id_utilisateur=utilisateu0_2_.id_utilisateur where utilisateu0_.mail=? and utilisateu0_.mot_de_passe=?
+16:30:50,151 DEBUG SQL:109 - select this_.id_utilisateur as id_utili2_4_0_, this_1_.mail as mail3_4_0_, this_1_.mot_de_passe as mot_de_p4_4_0_, this_1_.nom as nom5_4_0_, this_1_.prenom as prenom6_4_0_ from Client this_ inner join utilisateur this_1_ on this_.id_utilisateur=this_1_.id_utilisateur
+16:30:50,160 DEBUG SQL:109 - insert into utilisateur (mail, mot_de_passe, nom, prenom, type_utilisateur) values (?, ?, ?, ?, 'client')
+16:30:50,166 DEBUG SQL:109 - insert into Client (id_utilisateur) values (?)
+16:30:50,172  INFO GenericApplicationContext:873 - Closing org.springframework.context.support.GenericApplicationContext@7ab6db4: startup date [Sun Apr 17 16:30:45 CEST 2016]; root of context hierarchy
+16:32:45,388  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:32:45,556  INFO XmlBeanDefinitionReader:316 - Loading XML bean definitions from class path resource [spring-data-test.xml]
+16:32:45,943  INFO GenericApplicationContext:513 - Refreshing org.springframework.context.support.GenericApplicationContext@2a438ef4: startup date [Sun Apr 17 16:32:45 CEST 2016]; root of context hierarchy
+16:32:46,484  INFO Version:66 - HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+16:32:46,491  INFO Version:54 - HHH000412: Hibernate Core {4.3.8.Final}
+16:32:46,494  INFO Environment:239 - HHH000206: hibernate.properties not found
+16:32:46,496  INFO Environment:346 - HHH000021: Bytecode provider name : javassist
+16:32:46,525  INFO Configuration:2111 - HHH000044: Configuring from URL: file:/Users/Jerome/Documents/AFCEPF/Atod26/Spring-Banque3Pom/BanqueSpring-ng/BanqueSpring-Data/target/test-classes/hibernate-test.cfg.xml
+16:32:46,554  WARN DTDEntityResolver:75 - HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+16:32:46,584  INFO Configuration:2216 - HHH000041: Configured SessionFactory: null
+16:32:47,242  INFO Dialect:145 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+16:32:47,363  WARN AnnotationBinder:910 - HHH000457: Joined inheritance hierarchy [fr.afcepf.atod26.java.spring.banque.entity.Utilisateur] defined explicit @DiscriminatorColumn.  Legacy Hibernate behavior was to ignore the @DiscriminatorColumn.  However, as part of issue HHH-6911 we now apply the explicit @DiscriminatorColumn.  If you would prefer the legacy behavior, enable the `hibernate.discriminator.ignore_explicit_for_joined` setting (hibernate.discriminator.ignore_explicit_for_joined=true)
+16:32:47,508  INFO TransactionFactoryInitiator:62 - HHH000399: Using default transaction strategy (direct JDBC transactions)
+16:32:47,525  INFO ASTQueryTranslatorFactory:47 - HHH000397: Using ASTQueryTranslatorFactory
+16:32:47,972  INFO SchemaExport:344 - HHH000227: Running hbm2ddl schema export
+16:32:47,975 DEBUG SQL:109 - alter table Client drop foreign key FK_tmsskjhmh47g1dfd33o3msmgg
+16:32:48,027 DEBUG SQL:109 - alter table Conseiller drop foreign key FK_1g42pjxn7l6j09l5xg8vto3be
+16:32:48,042 DEBUG SQL:109 - alter table compte drop foreign key FK_20a8vu6mk97d7bty54i0lsjr
+16:32:48,053 DEBUG SQL:109 - alter table operation_compte drop foreign key FK_f2x8vhjt0o6jddjq5dap8rrki
+16:32:48,064 DEBUG SQL:109 - drop table if exists Client
+16:32:48,066 DEBUG SQL:109 - drop table if exists Conseiller
+16:32:48,069 DEBUG SQL:109 - drop table if exists compte
+16:32:48,071 DEBUG SQL:109 - drop table if exists operation_compte
+16:32:48,074 DEBUG SQL:109 - drop table if exists utilisateur
+16:32:48,077 DEBUG SQL:109 - create table Client (id_utilisateur integer not null, primary key (id_utilisateur))
+16:32:48,090 DEBUG SQL:109 - create table Conseiller (id_utilisateur integer not null, primary key (id_utilisateur))
+16:32:48,102 DEBUG SQL:109 - create table compte (numero_compte integer not null auto_increment, date_de_creation datetime not null, type_de_compte varchar(45) not null, id_utilisateur integer, primary key (numero_compte))
+16:32:48,114 DEBUG SQL:109 - create table operation_compte (type_operation varchar(31) not null, numero_operation integer not null auto_increment, date_operation datetime not null, montant double precision not null, compte integer not null, primary key (numero_operation))
+16:32:48,130 DEBUG SQL:109 - create table utilisateur (type_utilisateur varchar(31) not null, id_utilisateur integer not null auto_increment, mail varchar(45) not null, mot_de_passe varchar(45) not null, nom varchar(45) not null, prenom varchar(45) not null, primary key (id_utilisateur))
+16:32:48,146 DEBUG SQL:109 - alter table Client add constraint FK_tmsskjhmh47g1dfd33o3msmgg foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:32:48,166 DEBUG SQL:109 - alter table Conseiller add constraint FK_1g42pjxn7l6j09l5xg8vto3be foreign key (id_utilisateur) references utilisateur (id_utilisateur)
+16:32:48,184 DEBUG SQL:109 - alter table compte add constraint FK_20a8vu6mk97d7bty54i0lsjr foreign key (id_utilisateur) references Client (id_utilisateur)
+16:32:48,204 DEBUG SQL:109 - alter table operation_compte add constraint FK_f2x8vhjt0o6jddjq5dap8rrki foreign key (compte) references compte (numero_compte)
+16:32:48,411  INFO SchemaExport:406 - HHH000230: Schema export complete
+16:32:48,542  INFO HibernateTransactionManager:341 - Using DataSource [org.apache.commons.dbcp2.BasicDataSource@6489e6e3] of Hibernate SessionFactory for HibernateTransactionManager
+16:32:48,905 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:32:48,948 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:32:49,019 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_, compte0_.id_utilisateur as id_utili4_2_, compte0_.date_de_creation as date_de_2_2_, compte0_.type_de_compte as type_de_3_2_ from compte compte0_ where compte0_.id_utilisateur=?
+16:32:49,044 DEBUG SQL:109 - select client0_.id_utilisateur as id_utili2_4_0_, client0_1_.mail as mail3_4_0_, client0_1_.mot_de_passe as mot_de_p4_4_0_, client0_1_.nom as nom5_4_0_, client0_1_.prenom as prenom6_4_0_ from Client client0_ inner join utilisateur client0_1_ on client0_.id_utilisateur=client0_1_.id_utilisateur where client0_.id_utilisateur=?
+16:32:49,066 DEBUG SQL:109 - insert into compte (id_utilisateur, date_de_creation, type_de_compte) values (?, ?, ?)
+16:32:49,104  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:32:49,131 DEBUG SQL:109 - select operationc0_.numero_operation as numero_o2_3_, operationc0_.compte as compte5_3_, operationc0_.date_operation as date_ope3_3_, operationc0_.montant as montant4_3_, operationc0_.type_operation as type_ope1_3_ from operation_compte operationc0_ where operationc0_.compte=?
+16:32:49,139 DEBUG SQL:109 - select compte0_.numero_compte as numero_c1_2_0_, compte0_.id_utilisateur as id_utili4_2_0_, compte0_.date_de_creation as date_de_2_2_0_, compte0_.type_de_compte as type_de_3_2_0_, client1_.id_utilisateur as id_utili2_4_1_, client1_1_.mail as mail3_4_1_, client1_1_.mot_de_passe as mot_de_p4_4_1_, client1_1_.nom as nom5_4_1_, client1_1_.prenom as prenom6_4_1_ from compte compte0_ left outer join Client client1_ on compte0_.id_utilisateur=client1_.id_utilisateur left outer join utilisateur client1_1_ on client1_.id_utilisateur=client1_1_.id_utilisateur where compte0_.numero_compte=?
+16:32:49,163 DEBUG SQL:109 - insert into operation_compte (compte, date_operation, montant, type_operation) values (?, ?, ?, 'OperationCompte')
+16:32:49,186  INFO TestContextManager:234 - Could not instantiate TestExecutionListener class [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their dependencies) available.
+16:32:49,205 DEBUG SQL:109 - select utilisateu0_.id_utilisateur as id_utili2_4_, utilisateu0_.mail as mail3_4_, utilisateu0_.mot_de_passe as mot_de_p4_4_, utilisateu0_.nom as nom5_4_, utilisateu0_.prenom as prenom6_4_, utilisateu0_.type_utilisateur as type_uti1_4_ from utilisateur utilisateu0_ left outer join Client utilisateu0_1_ on utilisateu0_.id_utilisateur=utilisateu0_1_.id_utilisateur left outer join Conseiller utilisateu0_2_ on utilisateu0_.id_utilisateur=utilisateu0_2_.id_utilisateur where utilisateu0_.mail=? and utilisateu0_.mot_de_passe=?
+16:32:49,243 DEBUG SQL:109 - select this_.id_utilisateur as id_utili2_4_0_, this_1_.mail as mail3_4_0_, this_1_.mot_de_passe as mot_de_p4_4_0_, this_1_.nom as nom5_4_0_, this_1_.prenom as prenom6_4_0_ from Client this_ inner join utilisateur this_1_ on this_.id_utilisateur=this_1_.id_utilisateur
+16:32:49,258 DEBUG SQL:109 - insert into utilisateur (mail, mot_de_passe, nom, prenom, type_utilisateur) values (?, ?, ?, ?, 'client')
+16:32:49,267 DEBUG SQL:109 - insert into Client (id_utilisateur) values (?)
+16:32:49,297  INFO GenericApplicationContext:873 - Closing org.springframework.context.support.GenericApplicationContext@2a438ef4: startup date [Sun Apr 17 16:32:45 CEST 2016]; root of context hierarchy
